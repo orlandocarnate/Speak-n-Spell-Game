@@ -115,8 +115,13 @@
         var wordArray = [];
         var guessArray = [];
         var charExists = false;
-        var guessArrayText = document.getElementById("guessArray");
+        var playInProgress = true;
+
+        // ELEMENT VARIABLES
         var feedbackText = document.getElementById("feedback");
+        var guessesText = document.getElementById("guesses");
+        var guessArrayText = document.getElementById("guessArray");
+        
 
         // word array
         var wordList = ['html', 'css', 'alphabet', 'prestige', 'javascript'];
@@ -132,6 +137,11 @@
         // breaks down the letters in the word and put them into wordArray.
         wordArray = randomWord.split('');
         console.log("Word array: " + wordArray);
+
+        // assign wordArray length to guessCount
+        guessCount = wordArray.length;
+        guessesText.textContent = guessCount;
+
 
         // push an underline to array depending on lenth of wordArray
         for (i=0; i<wordArray.length; i++) {
@@ -163,23 +173,8 @@
       // call the randomize function
       randomize();
 
-
-      // create onkey function
-
-        // if commpleted player wins
-
-        // else if letter chosen is part of the word then unhide letter
-
-        // else decrement guess count.
-
-        // if guess count is 0 player loses and reveals the word. 
-
-        // otherwise continue the game.
-
-        // Obtain key that was pressed
-
-      
-      document.onkeypress = function(event) {
+      if (guessCount > 0) {
+        document.onkeypress = function(event) {
         userKey = event.key.toLowerCase();
         console.log(event.keyCode);
 
@@ -187,7 +182,6 @@
         if ((event.keyCode >= 65 && event.keyCode <= 90) || (event.keyCode >= 97 && event.keyCode <= 122)) {
 
           // See if userKey is in the wordArray using a for loop
-
           for (i=0; i < wordArray.length-1; i++) {
 
             // if user key matches a character in the array then replace underline with character in the guessAray.
@@ -205,82 +199,19 @@
           // If there was no char then decrement the count and see if guessCount is zero
           else {
             guessCount--;
+            guessesText.textContent = guessCount;
             if (guessCount === 0) {
               feedbackText.textContent = "<span class='lost'>YOU LOSE! PRESS PLAY TO PLAY AGAIN!</span>";
-              
-            }
-          }
-          
-          if (userKey === psychicGuess) {
-            // choose a new random letter increment winCount by 1 and reset guessCount to 9
-            alert("You guessed right!");
-            psychicRandomGenerator();
-            winCount++;
-            resetGuessCount();
-            winCountElement.textContent = winCount;
-            guessCountElement.textContent = guessCount;
-            console.log("Guess count: " + guessCount);
-            console.log("Win count: " + winCount);
-            console.log("Lose count: " + loseCount);
-            // reset guessArray
-            guessArray = [];
-            userGuessList.textContent = guessArray;
 
-            // write current status to console
-            currentStatus(userKey, psychicGuess);
-            
-          } 
-          else {
-            // decrement guessCount
-            guessCount--;
-
-            // if guessCount is greater than 0 continue game
-            if (guessCount > 0) {
-              // alert("Sorry, you guessed wrong! You have " + guessCount + " guesses left!");
-              console.log("Guess count: " + guessCount);
-              console.log("Win count: " + winCount);
-              console.log("Lose count: " + loseCount);
-              loseCountElement.textContent = loseCount;
-              guessCountElement.textContent = guessCount;
-
-              // push user key to guess Array
-              guessArray.push(userKey);
-              userGuessList.textContent = guessArray;
-
-              // write current status to console
-              currentStatus(userKey, psychicGuess);
-            } 
-            // if guessCount is 0 then reset guessCount to 9 and increment lose count. Randomly pick new letter
-            else {
-              alert("Sorry, you ran out of guesses! You lose!");
-              resetGuessCount();
-              // increment losses by 1
-              loseCount++;
-              console.log("Guess count: " + guessCount);
-              console.log("Win count: " + winCount);
-              console.log("Lose count: " + loseCount);
-              loseCountElement.textContent = loseCount;
-              guessCountElement.textContent = guessCount;
-
-              //reset guessArray
-              guessArray = [];
-              userGuessList.textContent = guessArray;
-
-              // write current status to console
-              currentStatus(userKey, psychicGuess);
-              
-              // pick new letter
-              psychicRandomGenerator();
             }
             
-
           }
-
 
         }
       
       };
-
+      
+      }
 
 
       
