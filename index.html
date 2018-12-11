@@ -76,8 +76,7 @@
 
           <div class="col-md-8 text-primary text-center font-weight-bold">
               <p id="feedback">Press Any Key to get started!</p>
-              <p>Wins: <br>
-                <span id="wins">0</span>
+              <p>Wins: <span id="wins">0</span>  Losses: <span id="losses">0</span>
               </p>
               <p id="guessArray">_</p>
               <p>Number of guesses remaining:</p>
@@ -101,7 +100,7 @@
 
       </section>
 
-      <footer class="footer text-info fixed-bottom text-center pb-3">
+      <footer class="footer text-info fixed-bottom text-center pb-1">
         <p>Sound Samples from maximporges.com | LED Font Family from fontlibrary.org</p>
       </footer>
 
@@ -119,6 +118,7 @@
 
         // ELEMENT VARIABLES
         var feedbackText = document.getElementById("feedback");
+        var lossesText = document.getElementById("losses");
         var guessesText = document.getElementById("guesses");
         var guessArrayText = document.getElementById("guessArray");
         
@@ -157,6 +157,7 @@
         var randomWord = "";
         var wordArray = [];
         randomize();
+        playInProgress = true;
 
 
       }
@@ -169,49 +170,49 @@
         var randomWord = "";
         var wordArray = [];
         var guessArray = [];
+        playInProgress = true;
       }
       // call the randomize function
       randomize();
 
-      if (guessCount > 0) {
+      // Wait for player input
         document.onkeypress = function(event) {
         userKey = event.key.toLowerCase();
         console.log(event.keyCode);
-
-        // VALIDATION: use ONLY alphabet input based on keycode
-        if ((event.keyCode >= 65 && event.keyCode <= 90) || (event.keyCode >= 97 && event.keyCode <= 122)) {
-
-          // See if userKey is in the wordArray using a for loop
-          for (i=0; i < wordArray.length-1; i++) {
-
-            // if user key matches a character in the array then replace underline with character in the guessAray.
-            if (userKey === wordArray[i]) {
-              guessArray[i] = userKey;
-              charExists = true;
-            }
-          }
           
-          // if there was a character display update the guess text and reset charExists to FALSE
-          if (charExists === true) {
-            guessArrayText.textContent = guessArray.join(" ");
-            charExists = false;
-          } 
-          // If there was no char then decrement the count and see if guessCount is zero
-          else {
-            guessCount--;
-            guessesText.textContent = guessCount;
-            if (guessCount === 0) {
-              feedbackText.textContent = "<span class='lost'>YOU LOSE! PRESS PLAY TO PLAY AGAIN!</span>";
+        if (playInProgress) {
+          // VALIDATION: use ONLY alphabet input based on keycode
+          if ((event.keyCode >= 65 && event.keyCode <= 90) || (event.keyCode >= 97 && event.keyCode <= 122)) {
 
+            // See if userKey is in the wordArray using a for loop
+            for (i=0; i < wordArray.length-1; i++) {
+              // if user key matches a character in the array then replace underline with character in the guessAray.
+              if (userKey === wordArray[i]) {
+                guessArray[i] = userKey;
+                charExists = true;
+              }
             }
-            
-          }
+            // If there was no char then decrement the count and see if guessCount is zero
+            if (charExists === false) {
+              guessCount--;
+              guessesText.textContent = guessCount;
+              if (guessCount === 0) {
+                feedbackText.textContent = "<span class='lost'>YOU LOSE! PRESS PLAY TO PLAY AGAIN!</span>";
+                loseCount++;
+                lossesText.textContent = loseCount;
+                playInProgress = false;
+              }
+            }
+            // if there was a character display update the guess text and reset charExists to FALSE
+            if (charExists === true) {
+              guessArrayText.textContent = guessArray.join(" ");
+              charExists = false;
+            }
 
+          }
         }
       
       };
-      
-      }
 
 
       
