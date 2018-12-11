@@ -31,6 +31,27 @@
       .footer {
         /* color: rgb(255,238,0); */
       }
+      
+      .keypad {
+        background-color: midnightblue;
+        color: black;
+        font-weight: bold;
+        margin: 20px auto;
+        border-style: solid;
+        border-color: rgb(255,238,0);
+        border-width: 10px;
+        border-radius: 25px;
+
+      }
+
+      .btn {
+        border-color: black;
+        background-color: rgb(246,0,0);
+        border-width: 5px;
+        border-radius: 10px;
+        font-weight: bold;
+        font-size: 16pt;
+      }
 
       p { 
         font-family: 'ledfontsharpRegular'; 
@@ -67,16 +88,21 @@
           </div>
         </div>
 
-        <div class="row">
-          <div class="md-11 rounded keypad"></div>
+        <div class="row keypad d-flex justify-content-center">
+          <div class="md-11 p-3">
+            <div >
+                <button type="button" class="btn" id="playButton" onclick="playGame()">PLAY</button> 
+                <button type="button" class="btn" id="resetButton" onclick="resetGame()">RESET</button>
+            </div>
+            
+          </div>
         </div>
 
 
       </section>
 
       <footer class="footer text-info fixed-bottom text-center pb-3">
-        <p>Sound Samples from maximporges.com</p>
-        <p>LED Font Family from fontlibrary.org</p>
+        <p>Sound Samples from maximporges.com | LED Font Family from fontlibrary.org</p>
       </footer>
 
       <script>
@@ -96,6 +122,8 @@
 
       // create random word function
       function randomize() {
+        // reset guessArray
+        guessArray = [];
         var randomWord = wordList[Math.floor(Math.random() * wordList.length)];
         console.log("random word: " + randomWord);
 
@@ -111,6 +139,25 @@
 
       }
 
+      // play game button pickes a new word but keeps score.
+      function playGame() {
+        var guessCount = 0;
+        var randomWord = "";
+        var wordArray = [];
+        randomize();
+
+
+      }
+      
+      // reset score
+      function resetGame() {
+        var winCount = 0;
+        var loseCount = 0;
+        var guessCount = 0;
+        var randomWord = "";
+        var wordArray = [];
+        var guessArray = [];
+      }
       // call the randomize function
       randomize();
 
