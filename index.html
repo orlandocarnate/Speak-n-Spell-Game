@@ -28,6 +28,10 @@
         font-family: 'Coustard', serif;
       }
 
+      .footer {
+        /* color: rgb(255,238,0); */
+      }
+
       p { 
         font-family: 'ledfontsharpRegular'; 
         font-weight: normal; 
@@ -49,26 +53,84 @@
               <img class="img-fluid rounded-circle p-3" src="https://images3.selzstatic.com/uploads/HwZJ8pRHHWJNYZa8/speak_and_spell_11.jpeg.jpg">
           </div>
 
-          <div class="col-md-8 text-primary">
+          <div class="col-md-8 text-primary text-center font-weight-bold">
               <p>Press Any Key to get started!</p>
               <p>Wins: <br>
                 <span id="wins">0</span>
               </p>
-              <p>- - - - - - - - - -</p>
+              <p id="guessArray">_</p>
               <p>Number of guesses remaining:</p>
               <p id="guesses">0</p>
+
+              <p>Letters already guessed:</p>
+              <p id="guessed">none</p>
           </div>
+        </div>
+
+        <div class="row">
+          <div class="md-11 rounded keypad"></div>
         </div>
 
 
       </section>
 
-      <footer>
+      <footer class="footer text-info fixed-bottom text-center pb-3">
         <p>Sound Samples from maximporges.com</p>
         <p>LED Font Family from fontlibrary.org</p>
       </footer>
 
+      <script>
+      // declare variables
+        var keyPress = "";
+        var winCount = 0;
+        var loseCount = 0;
+        var guessCount = 0;
+        var randomWord = "";
+        var wordArray = [];
+        var guessArray = [];
+        var guessArrayText = document.getElementById("guessArray");
+
+        // word array
+        var wordList = ['html', 'css', 'alphabet', 'prestige', 'javascript'];
+
+
+      // create random word function
+      function randomize() {
+        var randomWord = wordList[Math.floor(Math.random() * wordList.length)];
+        console.log("random word: " + randomWord);
+
+        // breaks down the letters in the word and put them in an array.
+        wordArray = randomWord.split('');
+        console.log("Word array: " + wordArray);
+
+        // push an underline to array depending on lenth of wordArray
+        for (i=0; i<wordArray.length; i++) {
+          guessArray.push('_');
+        }
+        guessArrayText.textContent = guessArray.join(" ");
+
+      }
+
+      // call the randomize function
+      randomize();
+
+
+      // create onkey function
+
+        // if commpleted player wins
+
+        // else if letter chosen is part of the word then unhide letter
+
+        // else decrement guess count.
+
+        // if guess count is 0 player loses and reveals the word. 
+
+        // otherwise continue the game.
+
+
       
+      
+      </script>
         
 
         
