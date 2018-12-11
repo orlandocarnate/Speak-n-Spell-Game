@@ -70,11 +70,11 @@
         
       <section>
         <div class="row d-flex justify-content-center bg-dark py-3">
-          <div class="col-md-3">
+          <div class="col-sm-3 col-md-3">
               <img class="img-fluid rounded-circle p-3" src="https://images3.selzstatic.com/uploads/HwZJ8pRHHWJNYZa8/speak_and_spell_11.jpeg.jpg">
           </div>
 
-          <div class="col-md-8 text-primary text-center font-weight-bold">
+          <div class="col-sm-8 col-md-8 text-primary text-center font-weight-bold">
               <p id="feedback">Press Any Key to get started!</p>
               <p>Wins: <span id="wins">0</span>  Losses: <span id="losses">0</span>
               </p>
@@ -116,6 +116,10 @@
         var charExists = false;
         var playInProgress = true;
 
+        // sound variables
+        var soundPlay;
+
+
         // ELEMENT VARIABLES
         var feedbackText = document.getElementById("feedback");
         var lossesText = document.getElementById("losses");
@@ -126,6 +130,22 @@
         // word array
         var wordList = ['html', 'css', 'alphabet', 'prestige', 'javascript'];
 
+      // sound function
+      function playSound(clip) {
+        switch (clip) {
+          case "melody":
+            soundFile = "assets/sounds/MELODY-1.wav";
+            break;
+          case "win":
+            soundFile = "assets/sounds/YOU-WIN.wav";
+            break;
+          case "lose":
+            soundFile = "assets/sounds/I-WIN.wav";
+            break;
+        }
+        soundPlay = new Audio(soundFile);
+        soundPlay.play();
+      }
 
       // create random word function
       function randomize() {
@@ -153,6 +173,7 @@
 
       // play game button pickes a new word but keeps score.
       function playGame() {
+        playSound("melody");
         var guessCount = 0;
         var randomWord = "";
         var wordArray = [];
@@ -198,6 +219,7 @@
               guessesText.textContent = guessCount;
               if (guessCount === 0) {
                 feedbackText.textContent = "<span class='lost'>YOU LOSE! PRESS PLAY TO PLAY AGAIN!</span>";
+                playSound("lose");
                 loseCount++;
                 lossesText.textContent = loseCount;
                 playInProgress = false;
