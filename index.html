@@ -78,7 +78,7 @@
               <p id="feedback">Press Any Key to get started!</p>
               <p>Wins: <span id="wins">0</span>  Losses: <span id="losses">0</span>
               </p>
-              <p id="guessArray">_</p>
+              <p id="fillInTheBlank">_</p>
               <p>Number of guesses remaining:</p>
               <p id="guessCount">0</p>
 
@@ -111,7 +111,8 @@
         var loseCount = 0;
         var guessCount = 0;
         var randomWord = "";
-        var randomWordSplit = [];
+        var fillInTheBlank = ""
+        // var randomWordSplit = [];
         var alreadyGuessedArray = [];
         var charExists = false;
         var playInProgress = true;
@@ -125,7 +126,7 @@
         var winsID = document.getElementById("wins");
         var lossesID = document.getElementById("losses");
         var guessCountID = document.getElementById("guessCount");
-        var guessArrayID = document.getElementById("guessArray");
+        var fillInTheBlankID = document.getElementById("fillInTheBlank");
         var alreadyGuessedID = document.getElementById("alreadyGuessed");
         
 
@@ -165,21 +166,19 @@
         randomWord = wordList[Math.floor(Math.random() * wordList.length)];
         console.log("random word: " + randomWord);
 
-        // break down the word into characters and store them in wordArray.
-        randomWordSplit = randomWord.split('');
-        console.log("Word array: " + randomWordSplit);
+        // assign randomWord length to guessCount
+        guessCount = randomWord.length;
+        guessCountID.textContent = guessCount;
 
-        // assign wordArray length to guessCount
-        guessCount = randomWordSplit.length;
-        guessesText.textContent = guessCount;
-
-
-        // Create the Underlines based length of randomWordSplit array
-        for (i=0; i<randomWordSplit.length; i++) {
-          guessArray.push('_');
+        // create a variable with underlines and spaces.
+        fillInTheBlank = '';
+        for (i=0; i<guessCount; i++) {
+          fillInTheBlank += '_';
         }
-        guessArrayText.textContent = guessArray.join(" ");
+        fillInTheBlank = fillInTheBlank.split('').join(' ');
 
+        console.log("Word array: " + fillInTheBlank);
+        fillInTheBlankID.textContent = fillInTheBlank;
       }
 
       // play game button pickes a new word but keeps score.
@@ -187,7 +186,6 @@
         playSound("melody");
         var guessCount = 0;
         var randomWord = "";
-        var wordArray = [];
         randomize();
         playInProgress = true;
 
