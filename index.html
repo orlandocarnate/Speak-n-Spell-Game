@@ -64,7 +64,7 @@
   </head>
   <body>
     <div class="container p-3">
-      <header class="header my-3 p-3 rounded">
+      <header class="header my-3 p-3 rounded text-center">
           <h1>HANGMAN</h1>
       </header>
         
@@ -80,10 +80,10 @@
               </p>
               <p id="guessArray">_</p>
               <p>Number of guesses remaining:</p>
-              <p id="guesses">0</p>
+              <p id="guessCount">0</p>
 
               <p>Letters already guessed:</p>
-              <p id="guessed">none</p>
+              <p id="pressedKeysList">none</p>
           </div>
         </div>
 
@@ -111,8 +111,8 @@
         var loseCount = 0;
         var guessCount = 0;
         var randomWord = "";
-        var wordArray = [];
-        var guessArray = [];
+        var randomWordSplit = [];
+        var alreadyGuessedArray = [];
         var charExists = false;
         var playInProgress = true;
 
@@ -121,10 +121,12 @@
 
 
         // ELEMENT VARIABLES
-        var feedbackText = document.getElementById("feedback");
-        var lossesText = document.getElementById("losses");
-        var guessesText = document.getElementById("guesses");
-        var guessArrayText = document.getElementById("guessArray");
+        var feedbackID = document.getElementById("feedback");
+        var winsID = document.getElementById("wins");
+        var lossesID = document.getElementById("losses");
+        var guessCountID = document.getElementById("guessCount");
+        var guessArrayID = document.getElementById("guessArray");
+        var alreadyGuessedID = document.getElementById("alreadyGuessed");
         
 
         // word array
@@ -147,24 +149,33 @@
         soundPlay.play();
       }
 
+      // PUSH char to array function
+      function pushAlreadyGuessed(x) {
+        console.log("You chose: " + x);
+        alreadyGuessedArray.push(x);
+        alreadyGuessedID.textContent = alreadyGuessedArray;
+      }
+
       // create random word function
       function randomize() {
-        // reset guessArray
-        guessArray = [];
-        var randomWord = wordList[Math.floor(Math.random() * wordList.length)];
+        // reset already guessed letters
+        alreadyGuessedArray = [];
+
+        // pick a random word from the wordList
+        randomWord = wordList[Math.floor(Math.random() * wordList.length)];
         console.log("random word: " + randomWord);
 
-        // breaks down the letters in the word and put them into wordArray.
-        wordArray = randomWord.split('');
-        console.log("Word array: " + wordArray);
+        // break down the word into characters and store them in wordArray.
+        randomWordSplit = randomWord.split('');
+        console.log("Word array: " + randomWordSplit);
 
         // assign wordArray length to guessCount
-        guessCount = wordArray.length;
+        guessCount = randomWordSplit.length;
         guessesText.textContent = guessCount;
 
 
-        // push an underline to array depending on lenth of wordArray
-        for (i=0; i<wordArray.length; i++) {
+        // Create the Underlines based length of randomWordSplit array
+        for (i=0; i<randomWordSplit.length; i++) {
           guessArray.push('_');
         }
         guessArrayText.textContent = guessArray.join(" ");
@@ -205,12 +216,26 @@
           // VALIDATION: use ONLY alphabet input based on keycode
           if ((event.keyCode >= 65 && event.keyCode <= 90) || (event.keyCode >= 97 && event.keyCode <= 122)) {
 
+            // Push userKey to guessedArray
+            pushPressedKeys(userKey);
+
             // See if userKey is in the wordArray using a for loop
             for (i=0; i < wordArray.length-1; i++) {
               // if user key matches a character in the array then replace underline with character in the guessAray.
               if (userKey === wordArray[i]) {
                 guessArray[i] = userKey;
                 charExists = true;
+              }
+
+              // if guessArray is equal to wordArray the Player WINS
+              console.log(guessArray.join(), wordArray.join());
+              if (guessArray.join() === wordArray.join()) {
+                feedbackText.textContent = "YOU WIN! PLAY AGAIN?";
+                playSound("win");
+                winCount++;
+                winsText.textContent = winCount;
+                playInProgress = false;
+
               }
             }
             // If there was no char then decrement the count and see if guessCount is zero
