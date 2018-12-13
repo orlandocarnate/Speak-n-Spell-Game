@@ -23,9 +23,15 @@ var guessCountID = document.getElementById("guessCount");
 var fillInTheBlankID = document.getElementById("fillInTheBlank");
 var alreadyGuessedID = document.getElementById("alreadyGuessed");
 
+// word list array
+var wordList = 
+    ['html', 'css', 'alphabet', 'prestige', 'javascript',
+    'jquery', 'bootstrap', 'flexbox', 'coding', 'developer',
+    'programmer'];
 
 // WORD GAME OBJECT
 var wordGame = {
+    // Pick random word from wordList
     randomize: function() {
         // reset already guessed letters
         alreadyGuessedArray = [];
@@ -48,8 +54,9 @@ var wordGame = {
 
         console.log("Word array: " + fillInTheBlank);
         fillInTheBlankID.textContent = fillInTheBlank;
-    }
+    },
 
+    // Play a sound
     playSound: function(melody) {
         switch (clip) {
             case "melody":
@@ -70,6 +77,7 @@ var wordGame = {
         soundPlay.play();
     },
 
+    // Play Letter Sound function
     playLetter: function(letter) {
         var letterSound = "assets/sounds/Alphabet/" + letter.toUpperCase() + ".wav";
         console.log(letterSound);
@@ -77,6 +85,7 @@ var wordGame = {
         soundPlay.play();
     },
 
+    // start game picks a new word but keeps score.
     playGame: function() {
         // call method within the object
         this.playSound("melody");
@@ -85,6 +94,26 @@ var wordGame = {
         playInProgress = true;
         this.randomize();
 
-    }
+    },
+
+    // reset game and score
+    resetGame: function() {
+        this.playSound("melody");
+        winCount = 0;
+        loseCount = 0;
+        guessCount = 0;
+        randomWord = "";
+        wordArray = [];
+        guessArray = [];
+        playInProgress = true;
+        this.randomize();
+    },
+
+    // PUSH char to array function
+    pushAlreadyGuessed: function(letter) {
+        console.log("You chose: " + letter);
+        alreadyGuessedArray.push(letter);
+        alreadyGuessedID.textContent = alreadyGuessedArray;
+    },
 
 }

@@ -79,7 +79,7 @@ function randomize() {
     // create a variable with underlines and spaces.
     fillInTheBlank = '';
     for (i=0; i<guessCount; i++) {
-    fillInTheBlank += '_';
+        fillInTheBlank += '_';
     }
     fillInTheBlank = fillInTheBlank.split('').join(' ');
 
@@ -90,8 +90,8 @@ function randomize() {
 // play game button pickes a new word but keeps score.
 function playGame() {
     playSound("melody");
-    var guessCount = 0;
-    var randomWord = "";
+    guessCount = 0;
+    randomWord = "";
     playInProgress = true;
     randomize();
 }
@@ -99,12 +99,12 @@ function playGame() {
 // reset score
 function resetGame() {
     playSound("melody");
-    var winCount = 0;
-    var loseCount = 0;
-    var guessCount = 0;
-    var randomWord = "";
-    var wordArray = [];
-    var guessArray = [];
+    winCount = 0;
+    loseCount = 0;
+    guessCount = 0;
+    randomWord = "";
+    wordArray = [];
+    guessArray = [];
     playInProgress = true;
     randomize();
 }
