@@ -76,6 +76,7 @@ var wordGame = {
         }
         soundPlay.src = soundFile;
         soundPlay.play();
+        
     },
 
     // Play Letter Sound function
@@ -94,6 +95,7 @@ var wordGame = {
         var randomWord = "";
         playInProgress = true;
         this.randomize();
+        feedbackID.textContent = "Press Play for a new word."
 
     },
 
@@ -104,6 +106,8 @@ var wordGame = {
         loseCount = 0;
         guessCount = 0;
         randomWord = "";
+        winsID.textContent = winCount;
+        lossesID.textContent = loseCount;
         wordArray = [];
         guessArray = [];
         playInProgress = true;
@@ -114,7 +118,7 @@ var wordGame = {
     pushAlreadyGuessed: function(letter) {
         console.log("You chose: " + letter);
         alreadyGuessedArray.push(letter);
-        alreadyGuessedID.textContent = alreadyGuessedArray;
+        alreadyGuessedID.textContent = alreadyGuessedArray.join(', ');
     },
 
     // validate keypress
@@ -138,7 +142,10 @@ var wordGame = {
                 fillInTheBlank = blankArray.join(' ');
                 fillInTheBlankID.textContent = fillInTheBlank;
                 charExists = true;
+
+                //play melody sound after playing letter sound
                 this.playLetter(userKey);
+                this.playLetter
                 // Player WINS if joinedBlank is equal to wordArray
                 console.log(revealedLetters, randomWord);
                 if (revealedLetters === randomWord) {
@@ -157,11 +164,16 @@ var wordGame = {
             guessCountID.textContent = guessCount;
             this.playLetter(userKey);
             if (guessCount === 0) {
-            feedbackID.textContent = "YOU LOSE - PRESS PLAY TO PLAY AGAIN";
+            feedbackID.textContent = "YOU LOSE - PLAY AGAIN?";
             this.playSound("lose");
             loseCount++;
             lossesID.textContent = loseCount;
-            playInProgress = false;
+
+            // display the word
+            fillInTheBlankID.textContent = randomWord.split('').join(' ');
+
+            // stop player key input
+            playInProgress = false; 
             } 
 
         }
