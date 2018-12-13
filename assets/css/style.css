@@ -1,2 +1,49 @@
 body {
+  font-family: 'VT323', monospace;
+  background-image: url("assets/images/cool-retro-wallpaper.jpg");
+  background-size: 100%;
+}
+
+.container {
+  background-color: rgb(246,0,0);
+  height: 100vh;
+}
+
+.header {
+  background-color: rgb(255,238,0);
+  color: rgb(246,0,0);
+  font-family: 'Coustard', serif;
+}
+
+.footer {
+  /* color: rgb(255,238,0); */
+  font-family: 'Coustard', serif;
+}
+
+.keypad {
+  /* background-color: midnightblue; */
+  color: black;
+  font-weight: bold;
+  margin: 20px auto;
+  border-style: solid;
+  border-color: rgb(255,238,0);
+  border-width: 10px;
+  border-radius: 25px;
+
+}
+
+.btn {
+  border-color: black;
+  background-color: rgb(246,0,0);
+  border-width: 5px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 16pt;
+}
+
+p { 
+  font-family: 'ledfontsharpRegular'; 
+  font-weight: normal; 
+  font-style: normal; 
+  text-transform: uppercase;
 }
