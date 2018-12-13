@@ -1,6 +1,6 @@
 body {
   font-family: 'VT323', monospace;
-  background-image: url("../../assets/images/cool-retro-wallpaper.jpg");
+  background-image: url("../../assets/images/cool-retro-wallpaper-web.jpg");
   background-size: 100%;
 }
 
@@ -13,6 +13,7 @@ body {
   background-color: rgb(255,238,0);
   color: rgb(246,0,0);
   font-family: 'Coustard', serif;
+  border-radius: 25px;
 }
 
 .footer {
