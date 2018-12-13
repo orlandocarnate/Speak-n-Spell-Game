@@ -21,4 +21,5 @@ I used specialized webfonts from Google and Fontlibrary.com.
 ## Game Object
 I will move the functions into an Object file. Any values or functions will be called using dot notation.
 
-Create Game Object
+* Create Game Object
+* 

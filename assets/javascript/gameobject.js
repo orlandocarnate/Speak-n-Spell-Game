@@ -14,6 +14,7 @@ var playInProgress = false;
 
 // sound variables
 var soundPlay = document.createElement('audio');
+soundPlay.volume = 0.15;
 
 // ELEMENT VARIABLES
 var feedbackID = document.getElementById("feedback");
@@ -117,8 +118,8 @@ var wordGame = {
     },
 
     // validate keypress
-    validateKey: function(k) {
-        if ((k.keyCode >= 65 && k.keyCode <= 90) || (k.keyCode >= 97 && k.keyCode <= 122)) {
+    validateKey: function(code) {
+        if ((code >= 65 && code <= 90) || (code >= 97 && code <= 122)) {
             return true;
         }
         else {
@@ -137,19 +138,15 @@ var wordGame = {
                 fillInTheBlank = blankArray.join(' ');
                 fillInTheBlankID.textContent = fillInTheBlank;
                 charExists = true;
-
+                this.playLetter(userKey);
                 // Player WINS if joinedBlank is equal to wordArray
-                console.log(joinedBlank, randomWord);
+                console.log(revealedLetters, randomWord);
                 if (revealedLetters === randomWord) {
                     feedbackID.textContent = "YOU WIN - PLAY AGAIN?";
-                    playSound("win");
+                    this.playSound("win");
                     winCount++;
                     winsID.textContent = winCount;
                     playInProgress = false;
-
-                } else {
-                    // play letter sound
-                    playLetter(userKey);
                 }
             }
         }
@@ -158,24 +155,22 @@ var wordGame = {
         if (!charExists) {
             guessCount--;
             guessCountID.textContent = guessCount;
+            this.playLetter(userKey);
             if (guessCount === 0) {
             feedbackID.textContent = "YOU LOSE - PRESS PLAY TO PLAY AGAIN";
-            playSound("lose");
+            this.playSound("lose");
             loseCount++;
             lossesID.textContent = loseCount;
             playInProgress = false;
             } 
-            else {
-            // play letter sound
-            playLetter(userKey);
-            }
+
         }
 
         // reset charExists to FALSE
         if (charExists) {
             charExists = false;
         }
-    },
+    }
 }
 
 // Event Listener for Play button
@@ -191,13 +186,14 @@ document.getElementById("resetButton").addEventListener("click", function(){
 // Get Player Input from Document
 document.onkeypress = function(event) {
     userKey = event.key.toLowerCase();
-    console.log(event.keyCode);
+    console.log(event.keyCode); // displays a coe number
+    console.log(event.key); // displays what key was pressed
 
     // if gameplay is in progress run the game
     if (playInProgress) {
 
         // continue of keypress is a valid letter
-        if (wordGame.validateKey(userKey)) {
+        if (wordGame.validateKey(event.keyCode)) {
             wordGame.pushAlreadyGuessed(userKey);
             wordGame.findMatch(userKey);
         }

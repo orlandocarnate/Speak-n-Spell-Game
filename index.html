@@ -16,7 +16,7 @@
   <body>
     <div class="container p-3 shadow-lg">
       <header class="header my-3 p-3 rounded text-center">
-          <h1>HANGMAN</h1>
+          <div class="display-3">WORD <span class="text-primary">GUESS</span></div>
       </header>
         
       <section>
@@ -26,7 +26,6 @@
           </div>
 
           <div class="col-sm-8 col-md-8 text-primary text-center font-weight-bold">
-              <p id="feedback" class="text-success">Press <strong>PLAY</strong> to start the game</p>
               <p>Wins: <span id="wins">0</span>  Losses: <span id="losses">0</span>
               </p>
               <p id="fillInTheBlank">_</p>
@@ -45,6 +44,12 @@
                 <button type="button" class="btn" id="resetButton">RESET</button>
             </div>
             
+          </div>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+          <div class="p-3">
+            <h1 id="feedback">Press <strong>PLAY</strong> to start the game</h1>
           </div>
         </div>
       </section>

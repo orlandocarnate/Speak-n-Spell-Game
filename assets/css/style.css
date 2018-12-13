@@ -47,3 +47,8 @@ p {
   font-style: normal; 
   text-transform: uppercase;
 }
+
+#feedback {
+    color: rgb(255,238,0);
+    font-family: 'Coustard', serif;
+}
