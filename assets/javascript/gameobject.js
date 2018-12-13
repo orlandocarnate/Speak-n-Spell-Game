@@ -116,4 +116,66 @@ var wordGame = {
         alreadyGuessedID.textContent = alreadyGuessedArray;
     },
 
+    // validate keypress
+    validateKey: function(userkey) {
+        if ((userkey.keyCode >= 65 && userkey.keyCode <= 90) || (userkey.keyCode >= 97 && userkey.keyCode <= 122)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    },
+
+    // does pressed key match any letter in the random word?
+    findMatch: function(userkey) {
+        // run a for loop to compare each letter and set charExists to True
+        for (i=0; i < randomWord.length; i++) {
+            if (userkey === randomWord.charAt(i)) {
+                blankArray = fillInTheBlank.split(' ');
+                blankArray[i] = userkey;
+                revealedLetters = blankArray.join('');
+                fillInTheBlank = blankArray.join(' ');
+                fillInTheBlankID.textContent = fillInTheBlank;
+                charExists = true;
+
+                // Player WINS if joinedBlank is equal to wordArray
+                console.log(joinedBlank, randomWord);
+                if (revealedLetters === randomWord) {
+                    feedbackID.textContent = "YOU WIN - PLAY AGAIN?";
+                    playSound("win");
+                    winCount++;
+                    winsID.textContent = winCount;
+                    playInProgress = false;
+
+                } else {
+                    // play letter sound
+                    playLetter(userKey);
+                }
+            }
+        }
+            
+        // if no match then reduce # of guesses by 1
+        if (!charExists) {
+            guessCount--;
+            guessCountID.textContent = guessCount;
+            if (guessCount === 0) {
+            feedbackID.textContent = "YOU LOSE - PRESS PLAY TO PLAY AGAIN";
+            playSound("lose");
+            loseCount++;
+            lossesID.textContent = loseCount;
+            playInProgress = false;
+            } 
+            else {
+            // play letter sound
+            playLetter(userKey);
+            }
+        }
+
+        // reset charExists to FALSE
+        if (charExists === true) {
+            charExists = false;
+        }
+    },
+
+
 }
