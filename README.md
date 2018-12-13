@@ -17,3 +17,8 @@ I used specialized webfonts from Google and Fontlibrary.com.
 * If the letter is in the array, we will unhide it.
 * If incorrect, decrement the number of guesses.
 * If the number of guesses reaches 0, alert the player that they have lost and restart the game.
+
+## Game Object
+I will move the functions into an Object file. Any values or functions will be called using dot notation.
+
+Create Game Object
