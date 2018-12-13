@@ -6,7 +6,7 @@ body {
 
 .container {
   background-color: rgb(246,0,0);
-  height: 100vh;
+  margin: auto;
 }
 
 .header {
