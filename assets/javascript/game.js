@@ -122,6 +122,7 @@ document.getElementById("resetButton").addEventListener("click", function(){
 // Wait for player input
     document.onkeypress = function(event) {
     userKey = event.key.toLowerCase();
+    // console.log(event.key);
     console.log(event.keyCode);
     
     if (playInProgress) {

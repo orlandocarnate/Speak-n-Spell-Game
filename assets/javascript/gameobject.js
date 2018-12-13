@@ -58,7 +58,7 @@ var wordGame = {
 
     // Play a sound
     playSound: function(melody) {
-        switch (clip) {
+        switch (melody) {
             case "melody":
                 randomNum = Math.floor(Math.random() * 4 + 1);
                 soundFile = "assets/sounds/MELODY-" + randomNum + ".wav";
@@ -117,8 +117,8 @@ var wordGame = {
     },
 
     // validate keypress
-    validateKey: function(userkey) {
-        if ((userkey.keyCode >= 65 && userkey.keyCode <= 90) || (userkey.keyCode >= 97 && userkey.keyCode <= 122)) {
+    validateKey: function(k) {
+        if ((k.keyCode >= 65 && k.keyCode <= 90) || (k.keyCode >= 97 && k.keyCode <= 122)) {
             return true;
         }
         else {
@@ -172,10 +172,35 @@ var wordGame = {
         }
 
         // reset charExists to FALSE
-        if (charExists === true) {
+        if (charExists) {
             charExists = false;
         }
     },
-
-
 }
+
+// Event Listener for Play button
+document.getElementById("playButton").addEventListener("click", function(){
+    wordGame.playGame();
+});
+
+// Event Listener for Reset button
+document.getElementById("resetButton").addEventListener("click", function(){
+    wordGame.resetGame();
+});
+
+// Get Player Input from Document
+document.onkeypress = function(event) {
+    userKey = event.key.toLowerCase();
+    console.log(event.keyCode);
+
+    // if gameplay is in progress run the game
+    if (playInProgress) {
+
+        // continue of keypress is a valid letter
+        if (wordGame.validateKey(userKey)) {
+            wordGame.pushAlreadyGuessed(userKey);
+            wordGame.findMatch(userKey);
+        }
+    }
+}
+
