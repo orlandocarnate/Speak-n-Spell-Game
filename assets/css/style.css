@@ -6,7 +6,9 @@ body {
 
 .container {
   background-color: rgb(246,0,0);
-  margin: auto;
+  /* margin: auto; */
+  height: 100%;
+  border-radius: 25px;
 }
 
 .header {
