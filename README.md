@@ -1,25 +1,57 @@
 # Word-Guess-Game
 
-My version of the Word Guess Game or Hangman is based on an old Speak N Spell electronic game.
+### Overview
 
-I used specialized webfonts from Google and Fontlibrary.com.
+In this assignment, you'll create one of two possible computer games: Word Guess or Psychic. These apps will run in the browser, and feature dynamically updated HTML and CSS powered by your JavaScript code.
 
-## The following is the pseudocode for the game:
+## Speak N Spell Style Word Game
+My version of the Word Guess Game is based on the old Speak N Spell electronic game.
 
-* Declare Variables
-* Create wordList Array with random words.
-* Create a random word function where a random index number is uses to pick a word in the wordList array.
-* Break down the random word into separate letters using `.split('')`
-* We create another array with underlines. THe number of underlines is determined by the length of the random word.
+## How to Play
+Press PLAY to start. The player presses a key and will determine if it is in the word or not. 
+The player wins if they get all the characters before guess count reaches 0 and increases their win count by 1 and a letter is revealed. The player loses if guess count reaches zero and 1 is added to the lose count.
+Press RESET to reset the win and lose count.
+The game plays a melody when PLAY or RESET is clicked. When a letter key is pressed a letter sound is played.
 
-* The player will press a key and the script will validate if it's a valid letter that was chosen before continuing.
-* If a letter was chosen, we will see if that letter is in the random word array.
-* If the letter is in the array, we will unhide it.
-* If incorrect, decrement the number of guesses.
-* If the number of guesses reaches 0, alert the player that they have lost and restart the game.
 
-## Game Object
-I will move the functions into an Object file. Any values or functions will be called using dot notation.
+Here is the folder structure:
+```
+├── assets
+|  ├── css
+|  |  └── style.css
+|  ├── images
+|  └── javascript
+|     └── game.js
+└── index.html
+```
 
-* Create Game Object
-* 
+
+## JavaScript Psuedocode
+
+The JavaScript code will be written in a separate javascript file called `game.js` 
+
+* Declare Global Variables
+    * Create variables for keyPress, win count, lose count, guessCount, randomWord, fillInTheBlank lines.
+    * Create arrays for already guessed letters and a word list.
+
+* Create an Object called `wordGame`
+* Create object methods
+    * randomize - picks a random word from the wordList array
+    * playSound - plays win, lose, or random melody based on a passed argument
+    * playLetter - plays a letter sound.
+    * playGame - starts the game by running the randomize method
+    * resetGame - resets the score
+    * pushAlreadyGuessed - pushes already pressed keys into an array
+    * validateKey - if the key that was pressed is a letter then it will return true, else return false
+    * findMatch - runs a for loop by splitting the randomWord into a local array, then compares the user key with each character. 
+        * If there's a match then play a letter sound.
+            * if all the characters are found the player wins and a melody is played. The win count increases by 1.
+        * Else if no character is found then the guess is reduced by 1.
+            * if remaining guesses are 0 then the player loses and lose count increases by 1.
+
+
+
+
+## Notes
+I started with functions and made sure they worked. I then created the wordGame object and made the functions as object methods. 
+I used specialized webfonts from the Google and Fontlibrary.com.
