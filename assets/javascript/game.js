@@ -14,7 +14,7 @@ var playInProgress = false;
 
 // sound variables
 var soundPlay = document.createElement('audio');
-soundPlay.volume = 0.15;
+soundPlay.volume = 0.25;
 
 // ELEMENT VARIABLES
 var feedbackID = document.getElementById("feedback");
