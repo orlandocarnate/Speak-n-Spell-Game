@@ -206,8 +206,14 @@ document.onkeypress = function(event) {
 
         // continue of keypress is a valid letter
         if (wordGame.validateKey(event.keyCode)) {
-            wordGame.pushAlreadyGuessed(userKey);
-            wordGame.findMatch(userKey);
+            if (alreadyGuessedArray.length === 0) {
+                wordGame.pushAlreadyGuessed(userKey);
+                wordGame.findMatch(userKey);
+            } else if (alreadyGuessedArray.indexOf(userKey) === -1) {
+                wordGame.pushAlreadyGuessed(userKey);
+                wordGame.findMatch(userKey);
+            }
+            // wordGame.findMatch(userKey);
         }
     }
 }
