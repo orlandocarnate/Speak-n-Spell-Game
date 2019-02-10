@@ -1,57 +1,181 @@
 body {
-  font-family: 'VT323', monospace;
+  /* font-family: 'VT323', monospace; */
+  color: blue;
   background-image: url("../../assets/images/cool-retro-wallpaper-web.jpg");
   background-size: 100%;
 }
 
-.container {
-  background-color: rgb(246,0,0);
-  /* margin: auto; */
-  height: 100%;
-  border-radius: 25px;
-}
-
-.header {
-  background-color: rgb(255,238,0);
-  color: rgb(246,0,0);
-  font-family: 'Coustard', serif;
-  border-radius: 25px;
-}
-
-.footer {
-  /* color: rgb(255,238,0); */
-  font-family: 'Coustard', serif;
-}
-
-.keypad {
-  /* background-color: midnightblue; */
-  color: black;
-  font-weight: bold;
-  margin: 20px auto;
-  border-style: solid;
-  border-color: rgb(255,238,0);
-  border-width: 10px;
-  border-radius: 25px;
-
-}
-
-.btn {
-  border-color: black;
-  background-color: rgb(246,0,0);
-  border-width: 5px;
-  border-radius: 10px;
-  font-weight: bold;
-  font-size: 16pt;
-}
-
-p { 
+p, .screen-container { 
   font-family: 'ledfontsharpRegular'; 
   font-weight: normal; 
   font-style: normal; 
   text-transform: uppercase;
 }
+a:link, a:visited {
+  text-decoration: none;
+}
+
+h4 {
+  margin: 5px 0;
+}
+
+.main-container {
+  box-sizing: border-box;
+  background-color: rgb(246,0,0);
+  /* margin: auto; */
+  height: 100%;
+  border-radius: 25px;
+  padding: 1px 0;
+  width: 768px;
+  margin: 0 auto;
+
+}
+
+.screen-container {
+  background-color: rgba(14, 14, 14, 0.849);
+  box-sizing: border-box;
+  padding: 1em 2em;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas: 
+    'photo wins-losses'
+    'photo blanks'
+    'photo guess-text'
+    'photo letters-guessed'
+    'photo letters'
+    ;
+}
+
+header {
+  width: 95%;
+  margin: 0 auto;
+  background-color: rgb(255,238,0);
+  color: rgb(246,0,0);
+  font-family: 'Coustard', serif;
+  border-radius: 15px;
+  text-align: center;
+}
+
+footer {
+  width: 95%;
+  /* color: rgb(255,238,0); */
+  font-family: 'Coustard', serif;
+  text-align: center;
+  font-size: .5em;
+}
+
+.photo {
+  width: 65%;
+  object-fit: cover;
+  border-radius: 50%;
+  grid-area: photo;
+}
+
+.wins-losses {
+  grid-area: wins-losses;
+}
+#fillInTheBlank {
+  grid-area: blanks;
+}
+#guess-text {
+  grid-area: guess-text;
+}
+#letters-text {
+  grid-area: letters-guessed;
+}
+#alreadyGuessed {
+  grid-area: letters;
+}
+
+
+.keypad-container {
+  box-sizing: border-box;
+  /* text-align: center; */
+  /* background-color: midnightblue; */
+  color: black;
+  background-color: blue;
+  font-weight: bold;
+  /* margin: 5px auto; */
+  padding: 5px 0;
+  border-style: solid;
+  border-color: rgb(255,238,0);
+  border-width: 5px;
+  border-radius: 15px;
+
+}
+
+.keys {
+  /* width: 100%; */
+  margin: 0 auto;
+}
+
+.main-btn {
+  text-align: center;
+  border-color: black;
+  background-color: rgb(246,0,0);
+  border-width: 2px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.letter {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  display: inline-block;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1em;
+  width: 2.5em;
+  height: 2.25em;
+  margin: .1em .02em;
+}
+.vowel {
+  background-color: yellow;
+}
+.consonant {
+  border-color: black;
+  background-color: orange;
+}
 
 #feedback {
     color: rgb(255,238,0);
     font-family: 'Coustard', serif;
+    text-align: center;
+}
+
+@media (max-width: 480px) {
+  /* .photo {
+      width: 50%;
+      object-fit: cover;
+      border-radius: 50%;
+  } */
+  .main-container {
+    width: 100%;
+  }
+  p, .screen-container { 
+    font-size: .75em;
+  }
+  .main-btn {
+    text-align: center;
+    border-color: black;
+    background-color: rgb(246,0,0);
+    border-width: 2px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1em;
+  }
+  
+  .letter {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline-block;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1em;
+    width: 1.5em;
+    height: 1.25em;
+    margin: .1em .02em;
+  }
+
 }
