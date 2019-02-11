@@ -48,13 +48,13 @@ var wordGame = {
         console.log("random word: " + randomWord);
 
         // assign randomWord length to guessCount
-        guessCount = 5;
+        guessCount = 7;
         // guessCount = randomWord.length;
         guessCountID.textContent = guessCount;
 
         // create a variable with underlines and spaces.
         fillInTheBlank = '';
-        for (i = 0; i < guessCount; i++) {
+        for (i = 0; i < randomWord.length; i++) {
             fillInTheBlank += '_';
         }
         fillInTheBlank = fillInTheBlank.split('').join(' ');
