@@ -96,11 +96,13 @@ footer {
   background-color: blue;
   font-weight: bold;
   /* margin: 5px auto; */
-  padding: 5px 0;
+  padding: 5px;
   border-style: solid;
   border-color: rgb(255,238,0);
   border-width: 5px;
   border-radius: 15px;
+  width: 90%;
+  margin: 0 auto;
 
 }
 
