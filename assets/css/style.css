@@ -117,6 +117,7 @@ footer {
 .play-buttons {
   display: flex;
   justify-content: center;
+  
 }
 
 .main-btn {
@@ -134,10 +135,10 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .letter {
-
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
@@ -150,6 +151,7 @@ footer {
   width: 2.5em;
   height: 2.25em;
   margin: .1em;
+  cursor: pointer;
 }
 .vowel {
   background-color: yellow;
