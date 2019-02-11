@@ -48,7 +48,8 @@ var wordGame = {
         console.log("random word: " + randomWord);
 
         // assign randomWord length to guessCount
-        guessCount = randomWord.length;
+        guessCount = 5;
+        // guessCount = randomWord.length;
         guessCountID.textContent = guessCount;
 
         // create a variable with underlines and spaces.
