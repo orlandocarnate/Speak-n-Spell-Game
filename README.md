@@ -1,7 +1,5 @@
-# Word-Guess-Game
-
-## Speak N Spell Style Word Game
-This is my JavaScript version of the old Speak N Spell electronic game.
+# Speak N Spell Style Word Guessing Game
+This is my JavaScript version of the old Speak N Spell electronic game complete with sound!
 
 ## How to Play
 Press PLAY to start. The player presses a key and will determine if it is in the word or not. 
