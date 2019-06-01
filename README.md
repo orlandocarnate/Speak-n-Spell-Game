@@ -1,11 +1,7 @@
 # Word-Guess-Game
 
-### Overview
-
-In this assignment, you'll create one of two possible computer games: Word Guess or Psychic. These apps will run in the browser, and feature dynamically updated HTML and CSS powered by your JavaScript code.
-
 ## Speak N Spell Style Word Game
-My version of the Word Guess Game is based on the old Speak N Spell electronic game.
+This is my JavaScript version of the old Speak N Spell electronic game.
 
 ## How to Play
 Press PLAY to start. The player presses a key and will determine if it is in the word or not. 
@@ -28,7 +24,7 @@ Here is the folder structure:
 
 ## JavaScript Psuedocode
 
-The JavaScript code will be written in a separate javascript file called `game.js` 
+The JavaScript code was written in a separate JavaScript file called `game.js` 
 
 * Declare Global Variables
     * Create variables for keyPress, win count, lose count, guessCount, randomWord, fillInTheBlank lines.
