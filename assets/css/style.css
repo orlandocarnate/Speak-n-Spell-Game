@@ -1,7 +1,7 @@
 body {
   /* font-family: 'VT323', monospace; */
   color: green;
-  background: url("../../assets/images/vintage-concrete.png");
+  background: url("../../assets/images/school.png");
   /* background-size: 100% 100%; */
 }
 
@@ -28,6 +28,7 @@ h4 {
   padding: 1px 0;
   width: 768px;
   margin: 0 auto;
+  box-shadow: 5px 10px 8px #888888;
 
 }
 
