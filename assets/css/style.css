@@ -1,8 +1,8 @@
 body {
   /* font-family: 'VT323', monospace; */
   color: green;
-  background-image: url("../../assets/images/gradient.jpg");
-  background-size: 100%;
+  background: url("../../assets/images/vintage-concrete.png");
+  /* background-size: 100% 100%; */
 }
 
 p, .screen-container { 
