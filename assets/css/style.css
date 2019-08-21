@@ -1,3 +1,13 @@
+@import url(//db.onlinewebfonts.com/c/4a7d9dc16cce827cbe527efa5724fbab?family=LED);
+@font-face {font-family: "LED";
+    src: url("//db.onlinewebfonts.com/t/4a7d9dc16cce827cbe527efa5724fbab.eot");
+    src: url("//db.onlinewebfonts.com/t/4a7d9dc16cce827cbe527efa5724fbab.eot?#iefix") format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/4a7d9dc16cce827cbe527efa5724fbab.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/4a7d9dc16cce827cbe527efa5724fbab.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/4a7d9dc16cce827cbe527efa5724fbab.ttf") format("truetype"),
+    url("//db.onlinewebfonts.com/t/4a7d9dc16cce827cbe527efa5724fbab.svg#LED") format("svg");
+}
+
 body {
   /* font-family: 'VT323', monospace; */
   color: green;
@@ -7,6 +17,7 @@ body {
 
 p, .screen-container { 
   font-family: 'ledfontsharpRegular'; 
+  font-family: 'LED'; 
   font-weight: normal; 
   font-style: normal; 
   text-transform: uppercase;
