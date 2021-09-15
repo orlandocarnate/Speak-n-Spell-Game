@@ -25,9 +25,7 @@
   <!-- MAIN CONTAINER -->
   <div class="main-container">
     <header>
-      <a href="index.html">
-        <h2 style="color: rgb(246,0,0);">WORD <span class="guess-text" style="color: blue;">GUESS</span></h2>
-      </a>
+        <span class="speak-text">Speak </span><span class="spell-text">& Spell</span></>
     </header>
 
     <!-- Screen container -->
@@ -36,17 +34,17 @@
       <img class="img-fluid rounded-circle p-3 photo" src="assets/images/speaknspell.jpg">
 
       <!-- WINS & LOSSES -->
-      <p class="wins-losses">
+      <div class="wins-losses">
         Wins: <span id="wins">0</span>&nbsp;&nbsp;&nbsp;Losses: <span id="losses">0</span>
-      </p>
+      </div>
 
       <!-- Guesses Remaining -->
-      <p id="fillInTheBlank">_</p>
-      <p id="guess-text">Guesses remaining: <span id="guessCount">0</span></p>
+      <div id="fillInTheBlank">_</div>
+      <div id="guess-text">Guesses remaining: <span id="guessCount">0</span></div>
 
 
-      <p id="letters-text">Letters guessed:</p>
-      <p id="alreadyGuessed">none</p>
+      <div id="letters-text">Letters guessed:</div>
+      <div id="alreadyGuessed">none</div>
 
 
     </main>
@@ -54,6 +52,10 @@
 
     <!-- KEYPAD CONTAINER -->
     <div class="keypad-container">
+      <div class="play-buttons">
+        <div class="main-btn" id="playButton">Play</div>
+        <div class="main-btn" id="resetButton">Reset Score</div>
+      </div>
       <div class="keys">
         <div class="letter vowel" value="a">A</div>
         <div class="letter consonant" value="b">B</div>
@@ -87,15 +89,12 @@
         
         
       </div>
-      <div class="play-buttons">
-        <div class="main-btn" id="playButton">Play</div>
-        <div class="main-btn" id="resetButton">Reset</div>
-      </div>
     </div>
 
 
     <footer>
-      Sound Samples from maximporges.com | LED Font Family from fontlibrary.org
+      Sound Samples from <a href="http://www.maximporges.com/" target="_blank">maximporges.com</a>
+       | LED Font Family from <a href="https://fontlibrary.org" target="_blank">fontlibrary.org</a>
     </footer>
 
   </div>
